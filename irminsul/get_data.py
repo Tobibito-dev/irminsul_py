@@ -1,91 +1,49 @@
-import requests
-from json.decoder import JSONDecodeError
-
-from .urls import get_url
+from .mode import get_mode
 from .data_object import DataObject
 
+from .local import get_data as local
+from .rest import get_data as rest
 
-# Necessity
+
+def get_all_data():
+    if get_mode() == 'rest':
+        return rest.get_categories()
+    elif get_mode() == 'local':
+        return local.get_categories()
+
+
+def get_category_data(category: str):
+    if get_mode() == 'rest':
+        return rest.get_item_names(category)
+    elif get_mode() == 'local':
+        return local.get_item_names(category)
+
+
+def get_item_data(category: str, item: str) -> DataObject:
+    if get_mode() == 'rest':
+        return rest.get_item_name(category, item)
+    elif get_mode() == 'local':
+        return local.get_item_name(category, item)
+
+
 def get_categories():
-    try:
-        categories = requests.get(get_url('api'))
-        return categories.json()
-    except JSONDecodeError:
-        print("No valid json files at url. Please change url or update package")
+    if get_mode() == 'rest':
+        return rest.get_categories()
+    elif get_mode() == 'local':
+        return local.get_categories()
 
 
 def get_item_names(category: str):
-    url = get_url('api')
-    if not url.endswith("/"):
-        url = url + "/"
-    try:
-        items = requests.get(url + category)
-        return items.json()
-    except JSONDecodeError:
-        print("No valid json files at url. Please change url or update package")
+    if get_mode() == 'rest':
+        return rest.get_item_names(category)
+    elif get_mode() == 'local':
+        return local.get_item_names(category)
 
 
-def get_item(category: str, item: str) -> DataObject:
-    url = get_url('api')
-    if not url.endswith("/"):
-        url = url + "/"
-    try:
-        item = requests.get(url + category + "/" + item)
-        return DataObject(item.json())
-    except JSONDecodeError:
-        print("No valid json files at url. Please change url or update package")
+def get_item_name(category: str, item: str) -> DataObject:
+    if get_mode() == 'rest':
+        return rest.get_item_name(category, item)
+    elif get_mode() == 'local':
+        return local.get_item_name(category, item)
 
 
-# QoL
-# artifacts
-def get_artifact_names():
-    return get_item_names('artifacts')
-
-
-def get_artifact(artifact_name: str) -> DataObject:
-    return get_item('artifacts', artifact_name)
-
-
-# common
-def get_common_names():
-    return get_item_names('common')
-
-
-def get_common(common_name: str) -> DataObject:
-    return get_item('common', common_name)
-
-
-# food
-def get_food_names():
-    return get_item_names('food')
-
-
-def get_food(food_name: str) -> DataObject:
-    return get_item('food', food_name)
-
-
-# weapons
-def get_weapon_names():
-    return get_item_names('weapons')
-
-
-def get_weapon(weapon_name: str) -> DataObject:
-    return get_item('weapons', weapon_name)
-
-
-# characters
-def get_character_names():
-    return get_item_names('characters')
-
-
-def get_character(character_name: str) -> DataObject:
-    return get_item('characters', character_name)
-
-
-# materials
-def get_material_names():
-    return get_item_names('materials')
-
-
-def get_material(material_name: str) -> DataObject:
-    return get_item('materials', material_name)

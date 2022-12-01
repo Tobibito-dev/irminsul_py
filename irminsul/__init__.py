@@ -1,5 +1,7 @@
 from .urls import change_url
 
+from .data_object import DataObject
+
 # Necessity
 from .get_resources import get_image
 from .get_data import get_categories, get_item_names, get_item

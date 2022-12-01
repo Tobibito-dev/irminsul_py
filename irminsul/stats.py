@@ -1,4 +1,4 @@
-from . import float_calculator
+from .util import float_calculator
 
 
 def get_stats(data_obj, level: int, promoted=False):
