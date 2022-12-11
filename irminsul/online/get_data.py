@@ -5,6 +5,14 @@ from ..urls import get_url
 from ..data_object import DataObject
 
 
+def get_all_data():
+    url = get_url('api')
+    if not url.endswith("/"):
+        url = url + "/"
+    return requests.get(url + 'data')
+
+
+
 def get_categories():
     try:
         categories = requests.get(get_url('api'))

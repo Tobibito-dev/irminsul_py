@@ -56,5 +56,5 @@ def get_material_names():
     return get_item_names('materials')
 
 
-def get_material(material_name: str) -> DataObject:
+def get_material_name(material_name: str) -> DataObject:
     return get_item_name('materials', material_name)
