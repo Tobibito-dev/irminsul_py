@@ -1,9 +1,11 @@
 from .mode import get_mode, Mode
-from .data_object import DataObject
+from irminsul.objects.data_object import DataObject
 
 from .local import get_data as local
 from .online import get_data as online
 
+def get_data_json():
+    return online.get_data_json()
 
 def get_all_data():
     if get_mode() == Mode.ONLINE:
@@ -19,7 +21,7 @@ def get_category_data(category: str):
         return local.get_category_data(category)
 
 
-def get_item_data(category: str, item: str) -> DataObject:
+def get_item_data(category: str, item: str):
     if get_mode() == Mode.ONLINE:
         return online.get_item_data(category, item)
     elif get_mode() == Mode.LOCAL:

@@ -2,7 +2,7 @@ from .mode import change_mode, Mode
 
 from .urls import change_url, Url
 
-from .data_object import DataObject
+from irminsul.objects.data_object import DataObject
 
 # Data
 # Necessity

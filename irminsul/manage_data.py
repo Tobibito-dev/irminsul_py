@@ -2,13 +2,13 @@ import json
 from json import JSONDecodeError
 
 from .urls import Url, get_url
-from .online.get_data import get_all_data
+from .online.get_data import get_data_json
 from .local.storage import load_storage
 
 
 def download_data():
     try:
-        data = get_all_data().json()
+        data = get_data_json()
     except JSONDecodeError:
         print('No connection or data available. Keeping old Data.'
               ' Please check api version, url and internet connection.')

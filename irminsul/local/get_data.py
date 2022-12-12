@@ -1,6 +1,4 @@
-from json.decoder import JSONDecodeError
-
-from ..data_object import DataObject
+from irminsul.objects.data_object import DataObject
 
 from .storage import get_data
 
@@ -33,5 +31,5 @@ def get_item_names(category: str):
     return item_names
 
 
-def get_item_name(category: str, item: str) -> DataObject:
+def get_item_name(category: str, item: str):
     return get_data()[category][item]['name']

@@ -19,7 +19,6 @@ def change_mode(new_mode: str, force_download=True):
         mode = Mode.ONLINE
     elif new_mode == Mode.LOCAL:
         if force_download or not os.path.exists(get_url(Url.LOCAL)):
-            print('test')
             download_data()
         load_data()
         mode = Mode.LOCAL

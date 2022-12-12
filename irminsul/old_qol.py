@@ -1,7 +1,5 @@
-from .data_object import DataObject
+from irminsul.objects.data_object import DataObject
 
-from .get_data import get_category_data
-from .get_data import get_item_data
 from .get_data import get_item_names
 from .get_data import get_item_name
 

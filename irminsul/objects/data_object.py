@@ -1,5 +1,5 @@
-from . import stats
-from . import get_resources
+from irminsul.objects.object_methods import stats
+from irminsul import get_resources
 
 
 class DataObject:
