@@ -1,5 +1,3 @@
-from irminsul import get_resources
-
 
 class DataObject:
     def __init__(self, object_data: dict):
@@ -12,13 +10,8 @@ class DataObject:
         value = getattr(self, key)
         return value
 
-    def get_icon(self, icon_type: str):
-        if hasattr(self, 'sideIconName') and icon_type == 'side':
-            return get_resources.get_image(getattr(self, 'sideIconName'))
-        elif hasattr(self, 'iconName') and icon_type == 'front':
-            return get_resources.get_image(getattr(self, 'iconName'))
+    def get_name(self, language='all'):
+        if language == 'all':
+            return self.get_value('name')
         else:
-            print("No icon of type", icon_type, sep=' ')
-
-
-
+            return self.get_value('name')[language]
