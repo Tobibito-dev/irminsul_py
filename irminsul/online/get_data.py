@@ -2,9 +2,16 @@ import requests
 from json.decoder import JSONDecodeError
 
 from ..urls import get_url
-from ..objects.data_object import DataObject
+
 from ..util import class_util
 
+from ..objects.data_object import DataObject
+from ..objects.artifact_object import Artifact
+from ..objects.character_object import Character
+from ..objects.common_object import Common
+from ..objects.food_object import Food
+from ..objects.material_object import Material
+from ..objects.weapon_object import Weapon
 
 def get_data_json():
     url = get_url('api')
@@ -54,7 +61,7 @@ def get_category_data(category: str):
         items[item] = item_object
     return items
 
-def get_item_data(category: str, item: str) -> DataObject:
+def get_item_data(category: str, item: str) -> DataObject | Artifact | Character | Common | Food | Material | Weapon:
     url = get_url('api')
     if not url.endswith("/"):
         url = url + "/"

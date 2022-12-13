@@ -2,7 +2,13 @@ from .mode import change_mode, Mode
 
 from .urls import change_url, Url
 
-from irminsul.objects.data_object import DataObject
+from .objects.data_object import DataObject
+from .objects.artifact_object import Artifact
+from .objects.character_object import Character
+from .objects.common_object import Common
+from .objects.food_object import Food
+from .objects.material_object import Material
+from .objects.weapon_object import Weapon
 
 # Data
 # Necessity
