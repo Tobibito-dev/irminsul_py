@@ -3,8 +3,12 @@ from json import JSONDecodeError
 
 from .urls import Url, get_url
 from .online.get_data import get_data_json
-from .local.storage import load_storage
+from .local.storage import load_storage, json_to_cache
 
+
+def cache_data():
+    data = get_data_json()
+    json_to_cache(data)
 
 def download_data():
     try:

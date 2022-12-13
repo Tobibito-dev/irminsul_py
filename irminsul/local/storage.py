@@ -16,5 +16,12 @@ def load_storage(path: str):
                     data[category][item] = DataObject(json_data[category][item])
                     change_class(data[category][item], category)
 
+def json_to_cache(json_data: dict):
+    for category in json_data:
+        data[category] = {}
+        for item in json_data[category]:
+            data[category][item] = DataObject(json_data[category][item])
+            change_class(data[category][item], category)
+
 def get_data():
     return data
