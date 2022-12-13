@@ -13,7 +13,7 @@ from ..objects.food_object import Food
 from ..objects.material_object import Material
 from ..objects.weapon_object import Weapon
 
-def get_data_json():
+def get_data_json() -> dict:
     url = get_url('api')
     if not url.endswith("/"):
         url = url + "/"
@@ -23,7 +23,7 @@ def get_data_json():
     except JSONDecodeError:
         print("No valid json files at url. Please change url or update package")
 
-def get_all_data():
+def get_all_data() -> dict[dict[DataObject]]:
     data = {}
     temp_data = {}
     url = get_url('api')
@@ -43,7 +43,7 @@ def get_all_data():
     return data
 
 
-def get_category_data(category: str):
+def get_category_data(category: str) -> dict[DataObject]:
     items = {}
     temp_items = {}
     url = get_url('api')
@@ -61,7 +61,7 @@ def get_category_data(category: str):
         items[item] = item_object
     return items
 
-def get_item_data(category: str, item: str) -> DataObject | Artifact | Character | Common | Food | Material | Weapon:
+def get_item_data(category: str, item: str) -> DataObject:
     url = get_url('api')
     if not url.endswith("/"):
         url = url + "/"
