@@ -13,7 +13,7 @@ dynamic = ["version"]
 keywords = ["genshin impact", "genshin", "irminsul"]
 classifiers = [
     "License :: OSI Approved :: MIT License",
-    "Programming LAnguage :: Python",
+    "Programming Language :: Python",
     "Programming Language :: Python :: 3"
 ]
 dependencies = [
