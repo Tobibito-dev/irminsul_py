@@ -1,3 +1,4 @@
+import irminsul
 from .mode import change_mode, Mode
 
 from .urls import change_url, Url
@@ -21,3 +22,5 @@ from .get_qol import artifacts, characters, common, food, materials, weapons
 # Assets
 # Necessity
 from .get_resources import get_image
+
+irminsul.change_mode(Mode.CACHE)

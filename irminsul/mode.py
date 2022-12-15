@@ -25,7 +25,7 @@ def change_mode(new_mode: str, force_download=True):
         mode = Mode.LOCAL
     elif new_mode == Mode.CACHE:
         cache_data()
-        mode = Mode.LOCAL
+        mode = Mode.CACHE
     else:
         print('Mode does not exist. Keeping', mode, 'mode.', sep=' ')
 
